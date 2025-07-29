@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Class-wise Syllabus - ZPHS Munigadapa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e6f0ff;
+      color: #000;
+      animation: fadeInPage 1s ease;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #004080;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      padding: 10px 18px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #00264d;
+      border-radius: 6px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      animation: slideUp 1s ease;
+    }
+
+    .container h2 {
+      color: #003366;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      padding: 12px;
+      margin: 8px 0;
+      background-color: #f0f7ff;
+      border-left: 6px solid #003366;
+      border-radius: 6px;
+      font-size: 16px;
+      animation: fadeInList 0.6s ease;
+    }
+
+    li a {
+      color: #003366;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #003366;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      animation: slideUp 1s ease;
+    }
+
+    .back-button:hover {
+      background-color: #00264d;
+    }
+
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease-in-out;
+      z-index: 1000;
+    }
+
+    .popup-box {
+      background-color: white;
+      color: black;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      animation: slideIn 0.4s ease-in-out;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .popup-buttons button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .popup-buttons button:first-child {
+      background-color: #d32f2f;
+      color: white;
+    }
+
+    .popup-buttons button:last-child {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInList {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media screen and (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Zilla Parishad High School - Munigadapa</h1>
+    <p>Class-wise Syllabus</p>
+  </header>
+
+  <nav>
+    <div class="nav-left">
+      <a href="dashboard.html">🏠Dashboard</a>
+    </div>
+    <div class="nav-right">
+      <a href="#" onclick="logout()">🚪Logout</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>📘 Download Class-wise Syllabus</h2>
+   <div style="margin-bottom: 20px;">
+  <h3>📚 Telugu Medium</h3>
+  <ul>
+    <li><a href="tel syll.pdf">📘 Telugu Syllabus (TM)</a></li>
+    <li><a href="Hindi syll.pdf">📗 Hindi Syllabus (TM)</a></li>
+    <li><a href="English syll.pdf">📘 English Syllabus (EM)</a></li>
+    <li><a href="Math TM.pdf">➗ Maths Syllabus (TM)</a></li>
+    <li><a href="GS_TM  syll.pdf">🔬 General Science Syllabus (TM)</a></li>
+    <li><a href="PS_TM  syll.pdf">⚗️ Physical Science Syllabus (TM)</a></li>
+    <li><a href="BS_TM.pdf">🧬 Biology Syllabus (TM)</a></li>
+    <li><a href="SS_TM  syll.pdf">🌍 Social Studies Syllabus (TM)</a></li>
+  </ul>
+</div>
+
+<div>
+  <h3>📙 English Medium</h3>
+  <ul>
+    <li><a href="tel syll.pdf">📘 Telugu Syllabus (TM)</a></li>
+    <li><a href="Hindi syll.pdf">📗 Hindi Syllabus (TM)</a></li>
+    <li><a href="English syll.pdf">📘 English Syllabus (EM)</a></li>
+    <li><a href="Maths_Eng syll.pdf">➗ Maths Syllabus (EM)</a></li>
+    <li><a href="GS_Eng syll.pdf">🔬 General Science Syllabus (EM)</a></li>
+    <li><a href="EVS_EM syll.pdf">🌿 EVS Syllabus (EM)</a></li>
+    <li><a href="SS_EM syll.pdf">🌍 Social Studies Syllabus (EM)</a></li>
+  </ul>
+</div>>
+    <a href="facilities.html" class="back-button">⬅️ Back to Facilities</a>
+  </div>
+
+  <!-- Logout Confirmation Popup -->
+  <div id="logoutPopup" style="display: none;" class="popup-overlay">
+    <div class="popup-box">
+      <h3>Are you sure you want to logout?</h3>
+      <div class="popup-buttons">
+        <button onclick="confirmLogout()">Yes</button>
+        <button onclick="cancelLogout()">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function logout() {
+      document.getElementById("logoutPopup").style.display = "flex";
+    }
+
+    function confirmLogout() {
+      localStorage.removeItem("loggedIn");
+      window.location.href = "index.html";
+    }
+
+    function cancelLogout() {
+      document.getElementById("logoutPopup").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

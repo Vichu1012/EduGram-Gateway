@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Activities - ZPHS Munigadapa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e6f0ff;
+      color: #003366;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #004080;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      padding: 10px 18px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      background-color: #00264d;
+      border-radius: 6px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .intro {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      margin-bottom: 40px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .intro h2 {
+      color: #003366;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card img {
+      max-width: 90%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin: 10px 0;
+      color: #003366;
+    }
+
+    .card p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media screen and (max-width: 768px) {
+      .card {
+        text-align: center;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Zilla Parishad High School - Munigadapa</h1>
+    <p>Activities & Student Life</p>
+  </header>
+
+  <nav>
+    <div class="nav-left">
+        <a href="dashboard.html">🏠 Dashboard</a> <!-- ✅ This is correct -->
+       <!-- ✅ This is correct -->
+    </div>
+    <div class="nav-right">
+      <a href="#" onclick="logout()">🚪 Logout</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="intro">
+      <h2>🌟 Activities at ZPHS Munigadapa</h2>
+      <p>
+        At ZPHS Munigadapa, we believe education extends beyond classrooms. We actively engage students in various activities such as sports, science fairs, cultural celebrations, and environmental campaigns. These foster confidence, creativity, and leadership.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="sports.jpg" alt="Sports Day">
+      <h3>🏃‍♂️ Sports Day</h3>
+      <p>
+        A vibrant annual event promoting physical health, sportsmanship, and team spirit. Students compete in track events, relay races, and team games like kabaddi and volleyball.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="science_fair.jpg" alt="Science Fair">
+      <h3>🔬 Science Fair</h3>
+      <p>
+        A platform to ignite scientific curiosity. Students present working models, explain scientific concepts, and display innovative projects to peers and local community members.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="rally.jpg" alt="Environment Rally">
+      <h3>🌱 Environment Awareness Rally</h3>
+      <p>
+        Students march through the village raising slogans and carrying placards promoting sustainability. Activities include tree planting and waste cleanup drives.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="cultural.jpg" alt="Cultural Programs">
+      <h3>💃 Cultural Programs</h3>
+      <p>
+        Celebrations like Annual Day and Independence Day bring colorful performances in music, dance, and drama. A joyful way to showcase talent and embrace our cultural roots.
+      </p>
+    </div>
+     <div class="card">
+      <img src="uniform_distribution.jpg" alt="Uniform Distribution">
+      <h3>👕 Uniform Distribution</h3>
+      <p>
+        Every year, students receive free school uniforms under the Telangana Government welfare scheme, ensuring equality and a sense of pride among learners.
+      </p>
+    </div>
+
+    <div class="card">
+      <img src="mid_day_meal.jpg" alt="Mid Day Meal Program">
+      <h3>🍲 Mid-Day Meal Program</h3>
+      <p>
+        Our school ensures nutritious meals are provided daily to all students, improving concentration, attendance, and overall health of children from all backgrounds.
+      </p>
+    </div>
+     <div class="card">
+      <img src="school_awareness.jpg" alt="School Enrollment Awareness">
+      <h3>📢 School Enrollment Awareness Program</h3>
+      <p>
+        Teachers and staff conduct door-to-door campaigns and village meetings to raise awareness about the importance of education. This program motivates parents to enroll their children in school, especially those from underprivileged backgrounds.
+      </p>
+    </div>
+  </div>
+
+  <!-- Logout Popup -->
+  <div id="logoutPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+    <div style="background:white; padding:30px; border-radius:12px; text-align:center;">
+      <h3>Are you sure you want to logout?</h3>
+      <button onclick="confirmLogout()" style="padding:10px 20px; margin:10px; background-color:#c0392b; color:white; border:none; border-radius:6px;">Yes</button>
+      <button onclick="cancelLogout()" style="padding:10px 20px; margin:10px; background-color:#3498db; color:white; border:none; border-radius:6px;">No</button>
+    </div>
+  </div>
+
+  <script>
+    function logout() {
+      document.getElementById("logoutPopup").style.display = "flex";
+    }
+
+    function confirmLogout() {
+      window.location.href = "index.html";
+    }
+
+    function cancelLogout() {
+      document.getElementById("logoutPopup").style.display = "none";
+    }
+
+    // Scroll animation
+    window.addEventListener("scroll", () => {
+      const cards = document.querySelectorAll(".card");
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          card.classList.add("visible");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

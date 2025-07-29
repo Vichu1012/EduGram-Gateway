@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ZPHS Munigadapa - Attendance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e6f0ff;
+      margin: 0;
+      padding: 0;
+      color: #000;
+      animation: fadeInPage 0.5s ease-in;
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes popupShow {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    h2, h3 {
+      text-align: center;
+      color: #003366;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .btn {
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin: 5px;
+    }
+
+    .btn:hover {
+      background-color: #0066cc;
+    }
+
+    .class-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #004080;
+      color: white;
+    }
+
+    .total-box {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .total-box div {
+      background: #f0f8ff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .date-box {
+      text-align: center;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    /* Login modal */
+    #loginModal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    #loginForm {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      text-align: center;
+      animation: popupShow 0.4s ease-out;
+      position: relative;
+      width: 300px;
+    }
+
+    #loginForm input {
+      padding: 10px;
+      margin: 10px;
+      width: 80%;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    #attendanceSection {
+      display: none;
+    }
+
+    /* Logout Modal */
+    #logoutModal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1001;
+    }
+
+    #logoutModal .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      animation: popupShow 0.4s ease-out;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #666;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .close-btn:hover {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Login Modal -->
+<div id="loginModal">
+  <div id="loginForm">
+    <button class="close-btn" onclick="redirectToFacilities()">✖</button>
+    <h3>Login to Access Attendance</h3>
+    <input type="text" id="username" placeholder="Username" /><br />
+    <input type="password" id="password" placeholder="Password" /><br />
+    <button class="btn" onclick="login()">Login</button>
+    <p id="loginError" style="color:red; margin-top:10px;"></p>
+  </div>
+</div>
+
+<!-- Logout Confirmation Modal -->
+<div id="logoutModal">
+  <div class="modal-content">
+    <h3>Are you sure you want to logout?</h3>
+    <button class="btn" onclick="logout()">Yes</button>
+    <button class="btn" onclick="closeLogoutModal()">Cancel</button>
+  </div>
+</div>
+
+<!-- Attendance Section -->
+<div id="attendanceSection">
+  <header>
+    <h1>Zilla Parishad High School - Munigadapa</h1>
+    <p>📋 Daily Attendance Tracker</p>
+    <button class="btn" onclick="confirmLogout()" style="position:absolute; top:20px; right:20px;">Logout</button>
+  </header>
+
+  <div class="container">
+    <div class="class-buttons">
+      <button class="btn" onclick="loadClass('6')">Class 6</button>
+      <button class="btn" onclick="loadClass('7')">Class 7</button>
+      <button class="btn" onclick="loadClass('8')">Class 8</button>
+      <button class="btn" onclick="loadClass('9')">Class 9</button>
+      <button class="btn" onclick="loadClass('10')">Class 10</button>
+    </div>
+
+    <h2 id="classTitle">Select a Class</h2>
+    <div class="date-box" id="dateBox"></div>
+    <div id="attendanceArea"></div>
+  </div>
+</div>
+
+<script>
+  const studentData = {
+    "6": ["Rohit", "Suma", "Naveen", "Anjali", "Mahesh", "Nisha", "Vamsi", "Gita", "Raju", "Mounika"],
+    "7": ["Teja", "Radha", "Vinay", "Meena", "Aravind", "Deepika", "Kiran", "Sanjana", "Surya", "Lalitha"],
+    "8": ["Rahul", "Bhavya", "Naresh", "Anusha", "Praveen", "Pooja", "Harsha", "Kavya", "Yashwanth", "Lakshmi"],
+    "9": ["Karthik", "Reshma", "Sai", "Varsha", "Mohan", "Sneha", "Abhi", "Harini", "Vikram", "Siri"],
+    "10": ["Ravi", "Sneha Reddy", "Vikram Naik", "Harika Yadav", "Manoj Reddy", "Sowmya Rao", "Karthik B", "Pavani Devi", "Arjun Sai", "Divya Goud"]
+  };
+
+  function loadClass(classNum) {
+    const area = document.getElementById("attendanceArea");
+    const names = studentData[classNum];
+    let html = `
+      <table>
+        <thead>
+          <tr><th>Student Name</th><th>Present</th></tr>
+        </thead><tbody>
+    `;
+    names.forEach(name => {
+      html += `<tr><td>${name}</td><td><input type="checkbox" class="present"></td></tr>`;
+    });
+    html += `</tbody></table>
+    <div style="text-align:center;">
+      <button class="btn" onclick="markAll(true)">Mark All Present</button>
+      <button class="btn" onclick="markAll(false)">Mark All Absent</button>
+      <button class="btn" onclick="calculateAttendance()">Calculate Attendance</button>
+    </div>
+    <div class="total-box">
+      <div id="totalPresent">✅ Present: 0</div>
+      <div id="totalAbsent">❌ Absent: 0</div>
+      <div id="percentage">📊 Attendance: 0%</div>
+    </div>
+    `;
+    area.innerHTML = html;
+
+    document.getElementById("classTitle").textContent = `Class ${classNum} - Attendance`;
+    const today = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+    document.getElementById("dateBox").textContent = `📅 ${today.toLocaleDateString(undefined, options)}`;
+  }
+
+  function markAll(status) {
+    document.querySelectorAll(".present").forEach(cb => cb.checked = status);
+  }
+
+  function calculateAttendance() {
+    const checkboxes = document.querySelectorAll(".present");
+    const total = checkboxes.length;
+    let present = 0;
+    checkboxes.forEach(cb => { if (cb.checked) present++; });
+    const absent = total - present;
+    const percent = ((present / total) * 100).toFixed(2);
+
+    document.getElementById("totalPresent").textContent = `✅ Present: ${present}`;
+    document.getElementById("totalAbsent").textContent = `❌ Absent: ${absent}`;
+    document.getElementById("percentage").textContent = `📊 Attendance: ${percent}%`;
+  }
+
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    if (user === "admin" && pass === "1234") {
+      document.getElementById("loginModal").style.display = "none";
+      document.getElementById("attendanceSection").style.display = "block";
+    } else {
+      document.getElementById("loginError").textContent = "Invalid credentials!";
+    }
+  }
+
+  function confirmLogout() {
+    document.getElementById("logoutModal").style.display = "flex";
+  }
+
+  function logout() {
+    window.location.href = "facilities.html";
+  }
+
+  function closeLogoutModal() {
+    document.getElementById("logoutModal").style.display = "none";
+  }
+
+  function redirectToFacilities() {
+    window.location.href = "facilities.html";
+  }
+</script>
+
+</body>
+</html>

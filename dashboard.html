@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - ZPHS Munigadapa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Video Background */
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.7;
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.2);
+      z-index: -1;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      color: #000;
+    }
+
+   header {
+  background: linear-gradient(to right,#7faddb, #004080);
+  color: #fff;
+  padding: 30px 20px 20px 20px;
+  text-align: center;
+}
+
+header img {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+    
+    nav {
+      background-color: #004080;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      padding: 10px 18px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #00264d;
+      border-radius: 6px;
+    }
+
+    .content {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .content img {
+      width: 60%;
+      max-width: 400px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .content h2 {
+      color: #003366;
+    }
+
+    .content p {
+      font-size: 18px;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease-in-out;
+      z-index: 1000;
+    }
+
+    .popup-box {
+      background-color: white;
+      color: black;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      animation: slideIn 0.4s ease-in-out;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .popup-buttons button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .popup-buttons button:first-child {
+      background-color: #d32f2f;
+      color: white;
+    }
+
+    .popup-buttons button:last-child {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media screen and (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .content img {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔴 Video Background -->
+  <video autoplay muted loop playsinline id="bgVideo">
+    <source src="#" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="video-overlay"></div>
+
+  <!-- ✅ Header with Logo -->
+<header>
+  <img src="logo.png" alt="ZPHS Logo" style="width: 120px;">
+  <h1>Zilla Parishad High School</h1>
+  <p>Welcome to the Dashboard</p>
+</header>
+
+  <!-- ✅ Navigation -->
+  <nav>
+    <div class="nav-left">
+      <a href="facilities.html">📚 Facilities</a>
+      <a href="activities.html">🎨 Activities</a>
+      <a href="achievements.html">🏆 Achievements</a>
+    </div>
+    <div class="nav-right">
+      <a href="#" onclick="logout()">🚪 Logout</a>
+    </div>
+  </nav>
+
+  <!-- ✅ Content Section -->
+  <div class="content">
+    <h2>Welcome to Your Learning Space</h2>
+    <p>
+      This dashboard gives you access to all the academic and co-curricular resources of ZPHS Munigadapa.
+    </p>
+    <p>
+      Explore study materials, check results, view timetables, and discover the school's achievements. Let your learning journey begin here!
+    </p>
+    <img src="dash bg.jpg" alt="Students Studying Together">
+  </div>
+
+  <!-- ✅ Logout Confirmation Popup -->
+  <div id="logoutPopup" style="display: none;" class="popup-overlay">
+    <div class="popup-box">
+      <h3>Are you sure you want to logout?</h3>
+      <div class="popup-buttons">
+        <button onclick="confirmLogout()">Yes</button>
+        <button onclick="cancelLogout()">No</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ JS -->
+  <script>
+    function logout() {
+      document.getElementById("logoutPopup").style.display = "flex";
+    }
+
+    function confirmLogout() {
+      window.location.href = "index.html";
+    }
+
+    function cancelLogout() {
+      document.getElementById("logoutPopup").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

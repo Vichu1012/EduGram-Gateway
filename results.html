@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Results - ZPHS Munigadapa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f6ff;
+      color: #003366;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #004080;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    nav a {
+      color: white;
+      padding: 12px 18px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+
+    nav a:hover {
+      background-color: #00264d;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 25px;
+    }
+
+    .section-divider {
+      margin: 40px 0 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #00224d;
+      border-bottom: 2px solid #003366;
+      padding-bottom: 8px;
+    }
+
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .result-button {
+      padding: 14px 26px;
+      background-color: #004080;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: transform 0.3s ease, background-color 0.3s;
+      display: inline-block;
+    }
+
+    .result-button:hover {
+      background-color: #0059b3;
+      transform: scale(1.05);
+    }
+
+    .back-button {
+      display: block;
+      margin: 30px auto 10px;
+      background-color: #003366;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease-in-out;
+      z-index: 1000;
+    }
+
+    .popup-box {
+      background-color: white;
+      color: black;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      animation: slideIn 0.4s ease-in-out;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .popup-buttons button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .popup-buttons button:first-child {
+      background-color: #d32f2f;
+      color: white;
+    }
+
+    .popup-buttons button:last-child {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media screen and (max-width: 600px) {
+      .button-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .result-button {
+        width: 90%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Zilla Parishad High School - Munigadapa</h1>
+    <p>Student Results</p>
+  </header>
+
+  <nav>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="#" onclick="logout()">🚪 Logout</a>
+  </nav>
+
+  <div class="container">
+    <h2>📄 View Class-wise Results</h2>
+
+    <div class="section-divider">Internal Class Results</div>
+    <div class="button-grid">
+      <a href="results/class6_results.pdf" target="_blank" class="result-button">Class 6 Results</a>
+      <a href="results/class7_results.pdf" target="_blank" class="result-button">Class 7 Results</a>
+      <a href="results/class8_results.pdf" target="_blank" class="result-button">Class 8 Results</a>
+      <a href="results/class9_results.pdf" target="_blank" class="result-button">Class 9 Results</a>
+    </div>
+
+    <div class="section-divider">Class 10 SSC Board Results</div>
+    <div class="button-grid">
+      <a href="https://results.bse.telangana.gov.in/" target="_blank" class="result-button">TS SSC Board Results</a>
+    </div>
+
+    <div class="section-divider">Supplementary Results</div>
+    <div class="button-grid">
+      <a href="https://results.bse.telangana.gov.in/SSCSUPPLYRESULTS/" target="_blank" class="result-button">TS SSC Supply Results</a>
+    </div>
+
+    <a href="facilities.html" class="back-button">⬅️ Back to Facilities</a>
+  </div>
+
+  <!-- Logout Confirmation Popup -->
+  <div id="logoutPopup" style="display: none;" class="popup-overlay">
+    <div class="popup-box">
+      <h3>Are you sure you want to logout?</h3>
+      <div class="popup-buttons">
+        <button onclick="confirmLogout()">Yes</button>
+        <button onclick="cancelLogout()">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function logout() {
+      document.getElementById("logoutPopup").style.display = "flex";
+    }
+
+    function confirmLogout() {
+      localStorage.removeItem("loggedIn");
+      window.location.href = "index.html";
+    }
+
+    function cancelLogout() {
+      document.getElementById("logoutPopup").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

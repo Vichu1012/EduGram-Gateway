@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZPHS Munigadapa - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('school-classroom-anime-style.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #003366;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #7faddb, #004080);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      animation: fadeInDown 1s ease;
+    }
+
+    nav {
+      background-color: #004080;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 10px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 16px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: #002d59;
+      border-radius: 6px;
+    }
+
+    .lang-switch {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .lang-switch button {
+      margin: 5px;
+      padding: 6px 12px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease;
+    }
+
+    .section h2 {
+      color: #003366;
+      margin-bottom: 10px;
+    }
+
+    .features, .quick-links, .announcements {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .feature-box, .quick-link, .announcement {
+      background: #e6f0ff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .feature-box:hover, .quick-link:hover, .announcement:hover {
+      transform: scale(1.03);
+      background: #d0e6ff;
+    }
+
+    .feature-box h3, .quick-link h3, .announcement h3 {
+      margin-bottom: 10px;
+      color: #004080;
+    }
+
+    .map {
+      margin-top: 40px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #99ccff;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .blur {
+      filter: blur(5px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    #loginModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #loginModal .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      animation: popIn 0.4s ease;
+    }
+
+    #loginModal input {
+      padding: 10px;
+      margin: 10px 0;
+      width: 90%;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    #loginModal button {
+      padding: 10px 25px;
+      background: #003366;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    #loginModal button:hover {
+      background: #002244;
+    }
+
+    #closeBtn {
+      background: transparent;
+      color: #003366;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #loginModal .login-box {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang-switch">
+  <button onclick="alert('Telugu version coming soon')">తెలుగు</button>
+  <button onclick="alert('Already in English')">English</button>
+</div>
+
+<header style="background-color: #000; color: white; padding: 20px 10px; text-align: center;">
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <img src="logo.png" alt="ZPHS Munigadapa Logo" style="height: 130px; margin-bottom: 10px;">
+    <h1 style="margin: 0; font-size: 28px;">Zilla Parishad High School</h1>
+    <p style="margin: 4px 0; font-size: 18px;">Munigadapa, Jagadevpur Mandal, Siddipet District</p>
+  </div>
+</header>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#mission">Mission</a>
+  <a href="#announcements">Announcements</a>
+  <a href="#principal">Principal</a>
+  <a href="#map">Location</a>
+  <a href="#" onclick="openLogin()">Login</a>
+  <a href="#footer">Contact</a>
+</nav>
+
+<div class="section">
+  <h2>🌟 Welcome Message</h2>
+  <p>
+    At ZPHS Munigadapa, we believe that every child deserves access to quality education. Our mission is to support underprivileged students by providing free learning resources, online materials, and academic support — even if they cannot afford traditional schooling.
+  </p>
+</div>
+<section class="section about" id="about">
+  <div class="content">
+    <h2 class="section-title">About ZPHS Munigadapa</h2>
+    <p class="section-description">
+      Zilla Parishad High School, Munigadapa is a government-run institution committed to providing quality education to rural children, empowering them with knowledge, skills, and values to build a bright future. Established with the vision of bridging the educational gap between urban and rural students, our school caters to hundreds of students from nearby villages.
+    </p>
+    <p class="section-description">
+      We offer education from classes 6 to 10, with experienced and dedicated teachers who guide students in both academics and character building. The school follows the SCERT curriculum and emphasizes inclusive learning, digital literacy, and co-curricular activities. With a focus on holistic development, ZPHS Munigadapa nurtures leadership, creativity, and discipline among its students.
+    </p>
+    <p class="section-description">
+      The school is equipped with classrooms, a library, science lab, and access to free learning resources via this website. Our mission is to ensure that **every child receives equal learning opportunities**, regardless of their background or economic status.
+    </p>
+  </div>
+</section>   
+
+<div class="section" id="mission">
+  <h2>🎯 Our Mission & Vision</h2>
+  <div class="features">
+    <div class="feature-box">
+      <h3>📘 Free Learning Resources</h3>
+      <p>Access textbooks, syllabus, and learning materials at no cost.</p>
+    </div>
+    <div class="feature-box">
+      <h3>💡 Digital Literacy</h3>
+      <p>Prepare students for the future by integrating technology in learning.</p>
+    </div>
+    <div class="feature-box">
+      <h3>🤝 Inclusive Education</h3>
+      <p>Ensure that no child is left behind due to financial constraints.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="section" id="announcements">
+  <h2>📢 Announcements</h2>
+  <div class="announcements">
+    <div class="announcement"><h3><i class="fas fa-bullhorn"></i> Admissions Open for 2025</h3></div>
+    <div class="announcement"><h3><i class="fas fa-calendar-alt"></i> Mid-term Exams </h3></div>
+    <div class="announcement"><h3><i class="fas fa-school"></i> Holiday</h3></div>
+  </div>
+</div>
+
+<div class="section" id="principal">
+  <h2>👨‍🏫 Message from Principal</h2>
+  <div class="features">
+    <div class="feature-box">
+      <h3>"Education is not just preparation for life – it is life itself."</h3>
+      <p>– Mr. KK, Headmaster</p>
+    </div>
+  </div>
+</div>
+
+<div class="section map" id="map">
+  <h2>📍 Find Us on Map</h2>
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15290.58535374593!2d78.70952655!3d17.75891745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcc7d5b93b74ef5%3A0x934c0935f48040f7!2sMunigadapa%2C%20Telangana%20502081!5e0!3m2!1sen!2sin!4v1624436600517!5m2!1sen!2sin"
+    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+<section class="section" id="project-info">
+  <h2>📖 About This Project</h2>
+  <p style="font-size: 18px; line-height: 1.6;">
+    <strong>EduGram Gateway</strong> is a free, accessible web platform designed specifically for <strong>Zilla Parishad High School, Munigadapa</strong> to help students access educational content anytime, from anywhere. This is my <strong>first ever full-stack web project</strong> (currently frontend), developed out of love and dedication for education and in tribute to my father, the Headmaster of this school.
+  </p>
+  <p style="font-size: 18px; line-height: 1.6;">
+    The platform includes resources like textbooks, syllabus files, timetables, results, announcements, and school highlights — all organized in an intuitive, animated, mobile-responsive design. 
+    <br><br>
+    In the next phase, I will develop the <strong>backend features</strong> such as secure login, admin dashboard, and real-time updates.
+  </p>
+  <p style="font-size: 18px; font-style: italic; margin-top: 20px;">
+    “If this helps even one student learn better or dream bigger — the mission is already a success.”
+  </p>
+</section>
+<footer id="footer">
+  <p>Contact: zphs.munigadapa@ts.gov.in | 9440297725</p>
+  <div class="social-icons">
+    <a href="#">Facebook</a>
+    <a href="#">Instagram</a>
+    <a href="#">YouTube</a>
+  </div>
+  <p>&copy; 2025 ZPHS Munigadapa. All rights reserved.</p>
+</footer>
+
+<!-- 🔐 Login Modal -->
+<div id="loginModal">
+  <div class="login-box">
+    <button id="closeBtn" onclick="closeLogin()">✖</button>
+    <h2>Login to ZPHS Munigadapa</h2>
+    <form onsubmit="return loginUser(event)">
+      <input type="text" id="username" placeholder="Username" required />
+      <br />
+      <input type="password" id="password" placeholder="Password" required />
+      <br />
+      <button type="submit" id="loginButton">Login</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openLogin() {
+    document.getElementById("loginModal").style.display = "flex";
+    document.querySelectorAll("header, nav, .section, footer").forEach(el => el.classList.add("blur"));
+  }
+
+  function closeLogin() {
+    document.getElementById("loginModal").style.display = "none";
+    document.querySelectorAll("header, nav, .section, footer").forEach(el => el.classList.remove("blur"));
+  }
+
+  function loginUser(event) {
+    event.preventDefault();
+    const u = document.getElementById("username").value;
+    const p = document.getElementById("password").value;
+    const loginBtn = document.getElementById("loginButton");
+
+    if (u === "admin" && p === "admin") {
+      alert("Login successful!");
+      window.location.href = "dashboard.html";
+    } else {
+      const randomX = Math.floor(Math.random() * 100 - 50);
+      const randomY = Math.floor(Math.random() * 50 - 25);
+      loginBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+      setTimeout(() => {
+        loginBtn.style.transform = "translate(0, 0)";
+      }, 400);
+      alert("Invalid credentials.");
+    }
+  }
+</script>
+
+</body>
+</html>
